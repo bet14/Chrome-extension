@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Video Downloader",
+  "version": "1.1",
+  "description": "Tìm và tải video trên trang web",
+  "permissions": [
+    "downloads",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "download-all-videos": {
+      "suggested_key": {
+        "default": "Ctrl+Q"
+      },
+      "description": "Tải xuống tất cả video trên trang"
+    }
+  }
+}
